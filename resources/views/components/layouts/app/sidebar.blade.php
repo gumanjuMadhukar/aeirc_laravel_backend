@@ -26,8 +26,14 @@
         {{--            <flux:navlist.item icon="arrow-right" :href="route('dashboard')" :current="request()->routeIs('dashboard')">Subscriptions</flux:navlist.item>--}}
         {{--            <flux:navlist.item icon="arrow-right" :href="route('dashboard')" :current="request()->routeIs('dashboard')">Invoices</flux:navlist.item>--}}
         {{--        </flux:navlist.group>--}}
-        @canany(['view users', 'view roles', 'view permissions'])
-            <flux:navlist.group heading="Users" class="grid">
+        @canany(['view users', 'view roles', 'view permissions','view banners'])
+            <flux:navlist.group heading="" class="grid">
+                @can('view banners')
+                    <flux:navlist.item icon="credit-card" :href="route('admin.banners.index')" :current="request()->routeIs('admin.banners.*')">
+                       <!-- <i class="fa-solid fa-paste"></i>  -->
+                       {{ __('banners.title') }}
+                    </flux:navlist.item>
+                @endcan
                 @can('view users')
                     <flux:navlist.item icon="user" :href="route('admin.users.index')" :current="request()->routeIs('admin.users.*')">
                         {{ __('users.title') }}

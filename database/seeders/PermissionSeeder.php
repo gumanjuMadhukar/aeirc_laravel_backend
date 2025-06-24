@@ -32,6 +32,11 @@ class PermissionSeeder extends Seeder
             'create permissions',
             'update permissions',
             'delete permissions',
+
+            // 'view banners',
+            // 'create banners',
+            // 'edit banners',
+            // 'delete banners',
         ];
 
         foreach ($permissions as $permission) {

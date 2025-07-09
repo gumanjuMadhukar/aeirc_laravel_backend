@@ -16,7 +16,8 @@
         <div>
             <strong>Image:</strong><br>
             @if($banner->image)
-                <img src="{{ $banner->image }}" alt="{{ $banner->title }}" class="w-64 mt-2 rounded shadow" />
+                <img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}" class="w-64 mt-2 rounded shadow" />
+                <!-- <img src="{{ $banner->image }}" alt="{{ $banner->title }}" class="w-64 mt-2 rounded shadow" /> -->
             @else
                 <span class="text-gray-500 italic">No image available</span>
             @endif

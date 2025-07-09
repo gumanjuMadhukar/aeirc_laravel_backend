@@ -34,6 +34,10 @@ class CreateBanner extends Component
     #[Validate('nullable|string')]
     public string $updated_by = ''; // or change this to file upload if needed
 
+    #[Validate('required|string|in:home,about,contact,services,products')]
+    public string $page = '';
+
+
     public function mount(): void
     {
         $this->authorize('create banners');
@@ -55,6 +59,8 @@ class CreateBanner extends Component
             // $base64Image = 'data:' . $mimeType . ';base64,' . base64_encode($fileContents);
             $path = $this->image->store('images/banners', 'public');
         }
+        // dd(Banner::latest()->first()->image);
+
         // dd($path);
         Banner::create([
             'title' => $this->title,
@@ -63,6 +69,7 @@ class CreateBanner extends Component
             'category' => $this->category,
             'status' => $this->status,
             'updated_by' => $this->updated_by,
+            'page' => $this->page,
             'image' => $path,
         ]);
 

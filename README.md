@@ -1,4 +1,4 @@
-# Tallstarter - A Laravel Livewire Starter Kit
+# AEIRC - A Laravel Livewire Starter Kit
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mortenebak/tallstarter.svg?style=flat-square)](https://packagist.org/packages/mortenebak/tallstarter)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -21,8 +21,8 @@ This Starter kit contains my starting point when developing a new Laravel projec
 ![alt text](docs/locale.png "Localization View")
 
 
-## TALL stack
-It uses the TALL stack, which stands for:
+## AEIRC stack
+It uses the AEIRC stack, which stands for:
 -   [Tailwind CSS](https://tailwindcss.com)
 -   [Alpine.js](https://alpinejs.dev)
 -   [Laravel](https://laravel.com)

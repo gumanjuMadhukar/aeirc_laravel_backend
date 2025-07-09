@@ -13,8 +13,15 @@
         <flux:input wire:model.live="description" label="{{ __('banners.description') }}" />
         <flux:input wire:model.live="category" label="{{ __('banners.category') }}" />
         <flux:input wire:model.live="updated_by" label="{{ __('banners.updated_by') }}" />
-        
-        <flux:select wire:model="status" label="{{ __('banners.status') }}" placeholder="{{ __('banners.select_status') }}" name="status">
+
+        <flux:select wire:model="page" label="Page" placeholder="Select a page" name="page">
+            @foreach (\App\Models\Banner::PAGES as $value => $label)
+                <flux:select.option value="{{ $value }}">{{ $label }}</flux:select.option>
+            @endforeach
+        </flux:select>
+
+        <flux:select wire:model="status" label="{{ __('banners.status') }}"
+            placeholder="{{ __('banners.select_status') }}" name="status">
             <flux:select.option value="active">{{ __('banners.status_active') }}</flux:select.option>
             <flux:select.option value="inactive">{{ __('banners.status_inactive') }}</flux:select.option>
         </flux:select>
@@ -23,7 +30,7 @@
         <flux:input wire:model.live="image" label="{{ __('banners.image_url') }}" type="file" />
 
         {{-- Optional: use checkbox or toggle for visibility --}}
-        {{-- 
+        {{--
         <flux:checkbox label="{{ __('banners.visible') }}" wire:model.live="visible" />
         --}}
 

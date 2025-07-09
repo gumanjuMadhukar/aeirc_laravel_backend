@@ -16,6 +16,13 @@
         <flux:input wire:model.live="category" label="{{ __('banners.category') }}" />
         <flux:input wire:model.live="updated_by" label="{{ __('banners.updated_by') }}" />
 
+        <flux:select wire:model="page" label="Page" placeholder="Select a page" name="page">
+            @foreach (\App\Models\Banner::PAGES as $value => $label)
+                <flux:select.option value="{{ $value }}">{{ $label }}</flux:select.option>
+            @endforeach
+        </flux:select>
+
+
         <flux:select wire:model="status" label="{{ __('banners.status') }}"
             placeholder="{{ __('banners.select_status') }}" name="status">
             <flux:select.option value="active">{{ __('banners.status_active') }}</flux:select.option>

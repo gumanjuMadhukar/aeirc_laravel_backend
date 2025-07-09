@@ -23,6 +23,16 @@ class Banner extends Model
      *
      * @var list<string>
      */
+
+    const PAGES = [
+        'home' => 'Home',
+        'about' => 'About',
+        'contact' => 'Contact',
+        'services' => 'Services',
+        'products' => 'Products',
+
+    ];
+
     protected $fillable = [
         'name',
         'title',
@@ -30,7 +40,8 @@ class Banner extends Model
         'category',
         'status',
         'image',
-        'updated_by'
+        'updated_by',
+        'page',
     ];
 
     /**
@@ -38,7 +49,7 @@ class Banner extends Model
      *
      * @var list<string>
      */
-    protected $hidden = [
+    protected $hidden = [ //can be removed
         'password',
         'remember_token',
     ];

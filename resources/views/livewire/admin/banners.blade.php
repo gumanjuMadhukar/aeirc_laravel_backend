@@ -12,8 +12,8 @@
     </x-page-heading>
 
     <div class="flex items-center justify-between w-full mb-6 gap-2">
-        <flux:input wire:model.live="search" placeholder="{{ __('global.search_here') }}" class="!w-auto"/>
-        <flux:spacer/>
+        <flux:input wire:model.live="search" placeholder="{{ __('global.search_here') }}" class="!w-auto" />
+        <flux:spacer />
 
         <flux:select wire:model.live="perPage" class="!w-auto">
             <flux:select.option value="10">{{ __('global.10_per_page') }}</flux:select.option>
@@ -32,6 +32,7 @@
                 <x-table.heading>{{ __('banners.description') }}</x-table.heading>
                 <x-table.heading>{{ __('banners.category') }}</x-table.heading>
                 <x-table.heading>{{ __('banners.updated_by') }}</x-table.heading>
+                <x-table.heading>{{ __('banners.page') }}</x-table.heading>
                 <x-table.heading>{{ __('banners.status') }}</x-table.heading>
                 <x-table.heading>{{ __('banners.image') }}</x-table.heading>
                 <x-table.heading class="text-right">{{ __('global.actions') }}</x-table.heading>
@@ -46,8 +47,12 @@
                     <x-table.cell>{{ $banner->description }}</x-table.cell>
                     <x-table.cell>{{ $banner->category }}</x-table.cell>
                     <x-table.cell>{{ $banner->updated_by}}</x-table.cell>
-                    <x-table.cell>{{ $banner->status }}</x-table.cell> 
-                    <x-table.cell><img src="{{ asset('storage/' . $banner->image ) }}" class="mb-2 rounded" alt="Current Banner Image" style="width:100%; height:35px; object-fit: cover;"></x-table.cell> 
+                    <x-table.cell>
+                        {{ \App\Models\Banner::PAGES[$banner->page] ?? ucfirst($banner->page ?? 'N/A') }}
+                    </x-table.cell>
+                    <x-table.cell>{{ $banner->status }}</x-table.cell>
+                    <x-table.cell><img src="{{ asset('storage/' . $banner->image) }}" class="mb-2 rounded"
+                            alt="Current Banner Image" style="width:100%; height:35px; object-fit: cover;"></x-table.cell>
                     <x-table.cell class="space-x-2 flex justify-end">
 
                         @can('update banners')
@@ -59,8 +64,9 @@
                             <flux:modal.trigger name="delete-profile-{{ $banner->id }}">
                                 <flux:button size="sm" variant="danger">{{ __('global.delete') }}</flux:button>
                             </flux:modal.trigger>
+
                             <flux:modal name="delete-profile-{{ $banner->id }}"
-                                        class="min-w-[22rem] space-y-6 flex flex-col justify-between">
+                                class="min-w-[22rem] space-y-6 flex flex-col justify-between">
                                 <div>
                                     <flux:heading size="lg">{{ __('banners.delete_banner') }}?</flux:heading>
                                     <flux:subheading>
@@ -74,14 +80,16 @@
                                             {{ __('global.cancel') }}
                                         </flux:button>
                                     </flux:modal.close>
-                                    <flux:spacer/>
+                                    <flux:spacer />
                                     <flux:button type="submit" variant="danger"
-                                                 wire:click.prevent="deletePermission('{{ $banner->id }}')">
+                                        wire:click.prevent="deleteBanner('{{ $banner->id }}')" wire:loading.attr="disabled"
+                                        wire:target="deleteBanner('{{ $banner->id }}')">
                                         {{ __('banners.delete_banner') }}
                                     </flux:button>
                                 </div>
                             </flux:modal>
                         @endcan
+
                     </x-table.cell>
                 </x-table.row>
             @endforeach

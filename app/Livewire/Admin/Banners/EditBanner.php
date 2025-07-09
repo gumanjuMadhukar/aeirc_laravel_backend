@@ -37,8 +37,12 @@ class EditBanner extends Component
     #[Validate('nullable|string')]
     public string $description = '';
 
+
     #[Validate('nullable|string')]
     public string $category = '';
+
+    #[Validate('required|string|in:home,about,contact,services,products')]
+    public string $page = '';
 
     #[Validate('nullable|string')]
     public string $updated_by = '';
@@ -55,6 +59,7 @@ class EditBanner extends Component
         $this->name = $banner->name ?? '';
         $this->description = $banner->description ?? '';
         $this->category = $banner->category ?? '';
+        $this->page = $banner->page ?? '';
         $this->updated_by = $banner->updated_by ?? '';
     }
 
@@ -77,6 +82,7 @@ class EditBanner extends Component
             'description' => $this->description,
             'category' => $this->category,
             'status' => $this->status,
+            'page' => $this->page,
             'updated_by' => $this->updated_by,
             'image' => $imagePath,
         ]);

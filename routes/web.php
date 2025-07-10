@@ -6,6 +6,10 @@ use App\Livewire\Admin\Banners\CreateBanner;
 use App\Livewire\Admin\Banners\EditBanner;
 use App\Livewire\Admin\Banners\ViewBanner;
 use App\Livewire\Admin\Index;
+use App\Livewire\Admin\Services;
+use App\Livewire\Admin\Services\CreateService;
+use App\Livewire\Admin\Services\EditService;
+use App\Livewire\Admin\Services\ViewService;
 use App\Livewire\Admin\Users;
 use App\Livewire\Admin\Users\CreateUser;
 use App\Livewire\Admin\Users\EditUser;
@@ -31,7 +35,7 @@ Route::middleware(['auth'])->group(function (): void {
     // Settings
     Route::redirect('settings', 'settings/profile');
     Route::get('settings/profile', Profile::class)->name('settings.profile');
-    Route::get('settings/password',Password::class)->name('settings.password');
+    Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
     Route::get('settings/locale', Locale::class)->name('settings.locale');
 
@@ -42,11 +46,11 @@ Route::middleware(['auth'])->group(function (): void {
         Route::get('/users/create', CreateUser::class)->name('users.create')->middleware('can:create users');
         Route::get('/users/{user}', ViewUser::class)->name('users.show')->middleware('can:view users');
         Route::get('/users/{user}/edit', EditUser::class)->name('users.edit')->middleware('can:update users');
-       
+
         Route::get('/roles', \App\Livewire\Admin\Roles::class)->name('roles.index')->middleware('can:view roles');
         Route::get('/roles/create', \App\Livewire\Admin\Roles\CreateRole::class)->name('roles.create')->middleware('can:create roles');
         Route::get('/roles/{role}/edit', \App\Livewire\Admin\Roles\EditRole::class)->name('roles.edit')->middleware('can:update roles');
-        
+
         Route::get('/permissions', \App\Livewire\Admin\Permissions::class)->name('permissions.index')->middleware('can:view permissions');
         Route::get('/permissions/create', \App\Livewire\Admin\Permissions\CreatePermission::class)->name('permissions.create')->middleware('can:create permissions');
         Route::get('/permissions/{permission}/edit', \App\Livewire\Admin\Permissions\EditPermission::class)->name('permissions.edit')->middleware('can:update permissions');
@@ -68,6 +72,24 @@ Route::middleware(['auth'])->group(function (): void {
         Route::get('/banners/{banner}/edit', EditBanner::class)
             ->name('banners.edit')
             ->middleware('can:update banners');
+
+
+        //service management
+        Route::get('/services', Services::class)
+            ->name('services.index')
+            ->middleware('can:view services');
+
+        Route::get('/services/create', CreateService::class)
+            ->name('services.create')
+            ->middleware('can:create services');
+
+        Route::get('/services/{service}', ViewService::class)
+            ->name('services.show')
+            ->middleware('can:view services');
+
+        Route::get('/services/{service}/edit', EditService::class)
+            ->name('services.edit')
+            ->middleware('can:update services');
 
     });
 

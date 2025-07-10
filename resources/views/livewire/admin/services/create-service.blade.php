@@ -12,7 +12,7 @@
         <flux:input wire:model.live="description" label="{{ __('services.description') }}" />
         <flux:input wire:model.live="description_for_list" label="{{ __('services.description_for_list') }}" />
         <flux:input wire:model.live="list" label="{{ __('services.list') }}" />
-        <flux:input wire:model.live="service_icon" label="{{ __('services.service_icon') }}" />
+        <flux:input wire:model.live="service_icon" label="{{ __('services.service_icon') }}"  placeholder="e.g. fa-solid fa-robot"/>
         <flux:input wire:model.live="service_name" label="{{ __('services.service_name') }}" />
         <flux:input wire:model.live="service_description" label="{{ __('services.service_description') }}" />
 

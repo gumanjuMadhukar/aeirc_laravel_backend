@@ -26,27 +26,32 @@
         {{--            <flux:navlist.item icon="arrow-right" :href="route('dashboard')" :current="request()->routeIs('dashboard')">Subscriptions</flux:navlist.item>--}}
         {{--            <flux:navlist.item icon="arrow-right" :href="route('dashboard')" :current="request()->routeIs('dashboard')">Invoices</flux:navlist.item>--}}
         {{--        </flux:navlist.group>--}}
-        @canany(['view users', 'view roles', 'view permissions','view banners'])
+        @canany(['view users', 'view roles', 'view permissions','view banners', 'view services'])
             <flux:navlist.group heading="" class="grid">
+                @can('view users')
+                <flux:navlist.item icon="user" :href="route('admin.users.index')" :current="request()->routeIs('admin.users.*')">
+                    {{ __('users.title') }}
+                </flux:navlist.item>
+                @endcan
+                @can('view roles')
+                <flux:navlist.item icon="shield-user" :href="route('admin.roles.index')" :current="request()->routeIs('admin.roles.*')">
+                    {{ __('roles.title') }}
+                </flux:navlist.item>
+                @endcan
+                @can('view permissions')
+                <flux:navlist.item icon="shield-check" :href="route('admin.permissions.index')" :current="request()->routeIs('admin.permissions.*')">
+                    {{ __('permissions.title') }}
+                </flux:navlist.item>
+                @endcan
                 @can('view banners')
                     <flux:navlist.item icon="credit-card" :href="route('admin.banners.index')" :current="request()->routeIs('admin.banners.*')">
                        <!-- <i class="fa-solid fa-paste"></i>  -->
                        {{ __('banners.title') }}
                     </flux:navlist.item>
                 @endcan
-                @can('view users')
-                    <flux:navlist.item icon="user" :href="route('admin.users.index')" :current="request()->routeIs('admin.users.*')">
-                        {{ __('users.title') }}
-                    </flux:navlist.item>
-                @endcan
-                @can('view roles')
-                    <flux:navlist.item icon="shield-user" :href="route('admin.roles.index')" :current="request()->routeIs('admin.roles.*')">
-                        {{ __('roles.title') }}
-                    </flux:navlist.item>
-                @endcan
-                @can('view permissions')
-                    <flux:navlist.item icon="shield-check" :href="route('admin.permissions.index')" :current="request()->routeIs('admin.permissions.*')">
-                        {{ __('permissions.title') }}
+                @can('view services')
+                    <flux:navlist.item icon="rectangle-group" :href="route('admin.services.index')" :current="request()->routeIs('admin.services.*')">
+                       {{ __('services.title') }}
                     </flux:navlist.item>
                 @endcan
             </flux:navlist.group>

@@ -21,7 +21,7 @@ return [
     'create_banner_description' => 'Add a new banner to be displayed on the site.',
     'banner_created' => 'Banner created successfully.',
     
-    'update_banner' => 'Edit Banner',
+    'edit_banner' => 'Edit Banner',
     'edit_banner_description' => 'Update banner details below.',
     'banner_edited' => 'Banner edited successfully.',
 

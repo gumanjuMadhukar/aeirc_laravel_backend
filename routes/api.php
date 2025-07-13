@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\BannerController;
 use App\Http\Controllers\API\FaqController;
+use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\WhyusController;
 use Illuminate\Http\Request;
@@ -34,4 +35,10 @@ Route::prefix('whyus')->group(function () {
 Route::prefix('faqs')->group(function () {
     Route::get('/', [FaqController::class, 'index']);         // Get all FAQs
     Route::get('/{id}', [FaqController::class, 'show']);      // Get FAQ by ID
+});
+
+// Product Routes
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);     // Get all products
+    Route::get('/{id}', [ProductController::class, 'show']);  // Get single product by ID});
 });

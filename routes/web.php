@@ -12,6 +12,10 @@ use App\Livewire\Admin\Faqs\EditFaq;
 use App\Livewire\Admin\Faqs\ViewFaq;
 use App\Livewire\Admin\Index;
 
+use App\Livewire\Admin\Products;
+use App\Livewire\Admin\Products\CreateProduct;
+use App\Livewire\Admin\Products\EditProduct;
+use App\Livewire\Admin\Products\ViewProduct;
 use App\Livewire\Admin\Services;
 use App\Livewire\Admin\Services\CreateService;
 use App\Livewire\Admin\Services\EditService;
@@ -105,6 +109,7 @@ Route::middleware(['auth'])->group(function (): void {
             ->name('services.edit')
             ->middleware('can:update services');
 
+
         // Whyus management routes
         Route::get('/whyusList', WhyusList::class)
             ->name('whyusList.index')
@@ -122,6 +127,7 @@ Route::middleware(['auth'])->group(function (): void {
             ->name('whyusList.edit')
             ->middleware('can:update whyus');
 
+
         // Faq management routes
         Route::get('/faqs', Faqs::class)
             ->name('faqs.index')
@@ -138,6 +144,24 @@ Route::middleware(['auth'])->group(function (): void {
         Route::get('/faqs/{faq}/edit', EditFaq::class)
             ->name('faqs.edit')
             ->middleware('can:update faq');
+
+
+        // Product management routes
+        Route::get('/products', Products::class)
+            ->name('products.index')
+            ->middleware('can:view products');
+
+        Route::get('/products/create', CreateProduct::class)
+            ->name('products.create')
+            ->middleware('can:create products');
+
+        Route::get('/products/{product}', ViewProduct::class)
+            ->name('products.show')
+            ->middleware('can:view products');
+
+        Route::get('/products/{product}/edit', EditProduct::class)
+            ->name('products.edit')
+            ->middleware('can:update products');
     });
 
 });

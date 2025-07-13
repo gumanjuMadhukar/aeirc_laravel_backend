@@ -64,6 +64,11 @@
                        {{ __('faqs.title') }}
                     </flux:navlist.item>
                 @endcan
+                @can('view products')
+                    <flux:navlist.item icon="cube" :href="route('admin.products.index')" :current="request()->routeIs('admin.product.*')">
+                       {{ __('products.title') }}
+                    </flux:navlist.item>
+                @endcan
             </flux:navlist.group>
         @endcanany
     </flux:navlist>

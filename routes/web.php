@@ -5,6 +5,11 @@ use App\Livewire\Admin\Banners;
 use App\Livewire\Admin\Banners\CreateBanner;
 use App\Livewire\Admin\Banners\EditBanner;
 use App\Livewire\Admin\Banners\ViewBanner;
+
+use App\Livewire\Admin\Faqs;
+use App\Livewire\Admin\Faqs\CreateFaq;
+use App\Livewire\Admin\Faqs\EditFaq;
+use App\Livewire\Admin\Faqs\ViewFaq;
 use App\Livewire\Admin\Index;
 
 use App\Livewire\Admin\Services;
@@ -117,7 +122,22 @@ Route::middleware(['auth'])->group(function (): void {
             ->name('whyusList.edit')
             ->middleware('can:update whyus');
 
+        // Faq management routes
+        Route::get('/faqs', Faqs::class)
+            ->name('faqs.index')
+            ->middleware('can:view faq');
 
+        Route::get('/faqs/create', CreateFaq::class)
+            ->name('faqs.create')
+            ->middleware('can:create faq');
+
+        Route::get('/faqs/{faq}', ViewFaq::class)
+            ->name('faqs.show')
+            ->middleware('can:view faq');
+
+        Route::get('/faqs/{faq}/edit', EditFaq::class)
+            ->name('faqs.edit')
+            ->middleware('can:update faq');
     });
 
 });

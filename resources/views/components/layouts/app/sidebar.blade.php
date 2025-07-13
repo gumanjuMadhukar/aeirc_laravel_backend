@@ -55,8 +55,13 @@
                     </flux:navlist.item>
                 @endcan
                 @can('view whyus')
-                    <flux:navlist.item icon="question-mark-circle" :href="route('admin.whyusList.index')" :current="request()->routeIs('admin.whyusList.*')">
+                    <flux:navlist.item icon="star" :href="route('admin.whyusList.index')" :current="request()->routeIs('admin.whyusList.*')">
                        {{ __('whyusList.title') }}
+                    </flux:navlist.item>
+                @endcan
+                @can('view faq')
+                    <flux:navlist.item icon="chat-bubble-left-right" :href="route('admin.faqs.index')" :current="request()->routeIs('admin.faq.*')">
+                       {{ __('faqs.title') }}
                     </flux:navlist.item>
                 @endcan
             </flux:navlist.group>

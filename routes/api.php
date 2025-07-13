@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\BannerController;
+use App\Http\Controllers\API\FaqController;
 use App\Http\Controllers\API\ServiceController;
+use App\Http\Controllers\API\WhyusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +15,7 @@ Route::get('/user', function (Request $request) {
 // Banner Routes
 // Route::apiResource('banners', BannerController::class); 
 Route::prefix('banners')->group(function () {
-        Route::get('/page/{page}',[BannerController::class, 'index']);
+    Route::get('/page/{page}', [BannerController::class, 'index']);
 });
 
 // Service Routes
@@ -23,3 +25,13 @@ Route::prefix('services')->group(function () {
 });
 
 // Whyus Routes
+Route::prefix('whyus')->group(function () {
+    Route::get('/', [WhyusController::class, 'index']);       // Get all Whyus
+    Route::get('/{id}', [WhyusController::class, 'show']);    // Get Whyus by ID
+});
+
+// FAQ Routes
+Route::prefix('faqs')->group(function () {
+    Route::get('/', [FaqController::class, 'index']);         // Get all FAQs
+    Route::get('/{id}', [FaqController::class, 'show']);      // Get FAQ by ID
+});

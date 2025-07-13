@@ -36,7 +36,7 @@
         <flux:input wire:model="newImage" label="{{ __('banners.image_url') }}" type="file" />
 
         <flux:button type="submit" icon="save" variant="primary">
-            {{ __('banners.update_banner') }}
+            {{ __('banners.edit_banner') }}
         </flux:button>
     </x-form>
 </section>

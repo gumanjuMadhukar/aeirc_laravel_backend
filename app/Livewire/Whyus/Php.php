@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Service;
+namespace App\Livewire\Whyus;
 
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Layout;
@@ -17,6 +17,6 @@ class Php extends Component
     #[Layout('components.layouts.app')]
     public function render(): View
     {
-        return view('livewire.service.php');
+        return view('livewire.whyus.php');
     }
 }

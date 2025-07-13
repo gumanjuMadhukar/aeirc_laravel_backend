@@ -27,7 +27,7 @@ return [
     
     'edit_service' => 'Edit Service',
     'edit_service_description' => 'Update service details below.',
-    'service_edited' => 'Service edited successfully.',
+    'service_updated' => 'Service edited successfully.',
 
     'delete_service' => 'Delete Service',
     'you_are_about_to_delete' => 'You are about to delete the service',

@@ -6,14 +6,23 @@ use App\Livewire\Admin\Banners\CreateBanner;
 use App\Livewire\Admin\Banners\EditBanner;
 use App\Livewire\Admin\Banners\ViewBanner;
 use App\Livewire\Admin\Index;
+
 use App\Livewire\Admin\Services;
 use App\Livewire\Admin\Services\CreateService;
 use App\Livewire\Admin\Services\EditService;
 use App\Livewire\Admin\Services\ViewService;
+
+
 use App\Livewire\Admin\Users;
 use App\Livewire\Admin\Users\CreateUser;
 use App\Livewire\Admin\Users\EditUser;
 use App\Livewire\Admin\Users\ViewUser;
+
+use App\Livewire\Admin\WhyusList;
+use App\Livewire\Admin\WhyusList\CreateWhyus;
+use App\Livewire\Admin\WhyusList\EditWhyus;
+use App\Livewire\Admin\WhyusList\ViewWhyus;
+
 use App\Livewire\Dashboard;
 use App\Livewire\Home;
 use App\Livewire\Settings\Appearance;
@@ -90,6 +99,24 @@ Route::middleware(['auth'])->group(function (): void {
         Route::get('/services/{service}/edit', EditService::class)
             ->name('services.edit')
             ->middleware('can:update services');
+
+        // Whyus management routes
+        Route::get('/whyusList', WhyusList::class)
+            ->name('whyusList.index')
+            ->middleware('can:view whyus');
+
+        Route::get('/whyusList/create', CreateWhyus::class)
+            ->name('whyusList.create')
+            ->middleware('can:create whyus');
+
+        Route::get('/whyusList/{whyus}', ViewWhyus::class)
+            ->name('whyusList.show')
+            ->middleware('can:view whyus');
+
+        Route::get('/whyusList/{whyus}/edit', EditWhyus::class)
+            ->name('whyusList.edit')
+            ->middleware('can:update whyus');
+
 
     });
 

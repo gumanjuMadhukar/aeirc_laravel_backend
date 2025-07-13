@@ -54,6 +54,11 @@
                        {{ __('services.title') }}
                     </flux:navlist.item>
                 @endcan
+                @can('view whyus')
+                    <flux:navlist.item icon="question-mark-circle" :href="route('admin.whyusList.index')" :current="request()->routeIs('admin.whyusList.*')">
+                       {{ __('whyusList.title') }}
+                    </flux:navlist.item>
+                @endcan
             </flux:navlist.group>
         @endcanany
     </flux:navlist>

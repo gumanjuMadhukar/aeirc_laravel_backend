@@ -69,7 +69,7 @@
         <flux:input wire:model="newServiceImage" label="{{ __('services.service_image') }}" type="file" />
 
         <flux:button type="submit" icon="save" variant="primary">
-            {{ __('services.update_service') }}
+            {{ __('services.edit_service') }}
         </flux:button>
     </x-form>
 </section>

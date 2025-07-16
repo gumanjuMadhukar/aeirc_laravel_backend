@@ -69,6 +69,31 @@
                        {{ __('products.title') }}
                     </flux:navlist.item>
                 @endcan
+                @can('view galleryList')
+                    <flux:navlist.item icon="photo" :href="route('admin.galleryList.index')" :current="request()->routeIs('admin.gallery.*')">
+                       {{ __('galleryList.title') }}
+                    </flux:navlist.item>
+                @endcan
+                @can('view clients')
+                    <flux:navlist.item icon="briefcase" :href="route('admin.clients.index')" :current="request()->routeIs('admin.client.*')">
+                       {{ __('clients.title') }}
+                    </flux:navlist.item>
+                @endcan
+                @can('view teams')
+                    <flux:navlist.item icon="user-group" :href="route('admin.teams.index')" :current="request()->routeIs('admin.team.*')">
+                       {{ __('teams.title') }}
+                    </flux:navlist.item>
+                @endcan
+                @can('view contacts')
+                    <flux:navlist.item icon="phone" :href="route('admin.contacts.index')" :current="request()->routeIs('admin.contact.*')">
+                       {{ __('contacts.title') }}
+                    </flux:navlist.item>
+                @endcan
+                @can('view contents')
+                    <flux:navlist.item icon="clipboard-document-list" :href="route('admin.contents.index')" :current="request()->routeIs('admin.content.*')">
+                       {{ __('contents.title') }}
+                    </flux:navlist.item>
+                @endcan
             </flux:navlist.group>
         @endcanany
     </flux:navlist>

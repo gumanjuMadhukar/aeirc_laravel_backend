@@ -22,7 +22,7 @@ class CreateBanner extends Component
     #[Validate('nullable|string')]
     public string $status = '';
 
-    #[Validate('nullable|file|max:1024')]
+    #[Validate('required|file|max:2048')]
     // public string $image = '';
     public ?TemporaryUploadedFile $image = null; // or change this to file upload if needed
     #[Validate('nullable|string')]

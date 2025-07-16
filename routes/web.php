@@ -1,26 +1,53 @@
 <?php
 
 use App\Http\Controllers\ImpersonationController;
-use App\Livewire\Admin\Banners;
-use App\Livewire\Admin\Banners\CreateBanner;
-use App\Livewire\Admin\Banners\EditBanner;
-use App\Livewire\Admin\Banners\ViewBanner;
+
+
+
+use App\Livewire\Admin\Clients;
+use App\Livewire\Admin\Clients\CreateClient;
+use App\Livewire\Admin\Clients\EditClient;
+use App\Livewire\Admin\Clients\ViewClient;
+
+use App\Livewire\Admin\Contacts;
+use App\Livewire\Admin\Contacts\CreateContact;
+use App\Livewire\Admin\Contacts\EditContact;
+use App\Livewire\Admin\Contacts\ViewContact;
+
+use App\Livewire\Admin\Contents;
+use App\Livewire\Admin\Contents\CreateContent;
+use App\Livewire\Admin\Contents\EditContent;
+use App\Livewire\Admin\Contents\ViewContent;
+use App\Livewire\Admin\GalleryList;
+use App\Livewire\Admin\GalleryList\CreateGallery;
+use App\Livewire\Admin\GalleryList\EditGallery;
+use App\Livewire\Admin\GalleryList\ViewGallery;
+
+use App\Livewire\Admin\Index;
+use App\Livewire\Admin\Products;
+use App\Livewire\Admin\Products\CreateProduct;
+use App\Livewire\Admin\Products\EditProduct;
+use App\Livewire\Admin\Products\ViewProduct;
 
 use App\Livewire\Admin\Faqs;
 use App\Livewire\Admin\Faqs\CreateFaq;
 use App\Livewire\Admin\Faqs\EditFaq;
 use App\Livewire\Admin\Faqs\ViewFaq;
-use App\Livewire\Admin\Index;
 
-use App\Livewire\Admin\Products;
-use App\Livewire\Admin\Products\CreateProduct;
-use App\Livewire\Admin\Products\EditProduct;
-use App\Livewire\Admin\Products\ViewProduct;
 use App\Livewire\Admin\Services;
 use App\Livewire\Admin\Services\CreateService;
 use App\Livewire\Admin\Services\EditService;
 use App\Livewire\Admin\Services\ViewService;
 
+use App\Livewire\Admin\Banners;
+use App\Livewire\Admin\Banners\CreateBanner;
+use App\Livewire\Admin\Banners\EditBanner;
+use App\Livewire\Admin\Banners\ViewBanner;
+
+use App\Livewire\Admin\Teams;
+use App\Livewire\Admin\Teams\CreateTeam;
+use App\Livewire\Admin\Teams\EditTeam;
+use App\Livewire\Admin\Teams\ViewTeam;
 
 use App\Livewire\Admin\Users;
 use App\Livewire\Admin\Users\CreateUser;
@@ -162,7 +189,96 @@ Route::middleware(['auth'])->group(function (): void {
         Route::get('/products/{product}/edit', EditProduct::class)
             ->name('products.edit')
             ->middleware('can:update products');
+
+
+        // Gallery management routes
+        Route::get('/galleryList', GalleryList::class)
+            ->name('galleryList.index')
+            ->middleware('can:view galleryList');
+
+        Route::get('/galleryList/create', CreateGallery::class)
+            ->name('galleryList.create')
+            ->middleware('can:create galleryList');
+
+        Route::get('/galleryList/{gallery}', ViewGallery::class)
+            ->name('galleryList.show')
+            ->middleware('can:view galleryList');
+
+        Route::get('/galleryList/{gallery}/edit', EditGallery::class)
+            ->name('galleryList.edit')
+            ->middleware('can:update galleryList');
+
+        // Client management routes
+        Route::get('/clients', Clients::class)
+            ->name('clients.index')
+            ->middleware('can:view clients');
+    
+        Route::get('/clients/create', CreateClient::class)
+            ->name('clients.create')
+            ->middleware('can:create clients');
+    
+        Route::get('/clients/{client}', ViewClient::class)
+            ->name('clients.show')
+            ->middleware('can:view clients');
+    
+        Route::get('/clients/{client}/edit', EditClient::class)
+            ->name('clients.edit')
+            ->middleware('can:update clients');
+
+        // Team management routes
+        Route::get('/teams', Teams::class)
+            ->name('teams.index')
+            ->middleware('can:view teams');
+    
+        Route::get('/teams/create', CreateTeam::class)
+            ->name('teams.create')
+            ->middleware('can:create teams');
+    
+        Route::get('/teams/{team}', ViewTeam::class)
+            ->name('teams.show')
+            ->middleware('can:view teams');
+    
+        Route::get('/teams/{team}/edit', EditTeam::class)
+            ->name('teams.edit')
+            ->middleware('can:update teams');
+
+        // Contact management routes
+        Route::get('/contacts', Contacts::class)
+            ->name('contacts.index')
+            ->middleware('can:view contacts');
+    
+        Route::get('/contacts/create', CreateContact::class)
+            ->name('contacts.create')
+            ->middleware('can:create contacts');
+    
+        Route::get('/contacts/{contact}', ViewContact::class)
+            ->name('contacts.show')
+            ->middleware('can:view contacts');
+    
+        Route::get('/contacts/{contact}/edit', EditContact::class)
+            ->name('contacts.edit')
+            ->middleware('can:update contacts');
+
+        // Content management routes
+        Route::get('/contents', Contents::class)
+            ->name('contents.index')
+            ->middleware('can:view contents');
+    
+        Route::get('/contents/create', CreateContent::class)
+            ->name('contents.create')
+            ->middleware('can:create contents');
+    
+        Route::get('/contents/{content}', ViewContent::class)
+            ->name('contents.show')
+            ->middleware('can:view contents');
+    
+        Route::get('/contents/{content}/edit', EditContent::class)
+            ->name('contents.edit')
+            ->middleware('can:update contents');
     });
+    
+
+        
 
 });
 

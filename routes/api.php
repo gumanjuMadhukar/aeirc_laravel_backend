@@ -6,8 +6,10 @@ use App\Http\Controllers\API\ContactController;
 use App\Http\Controllers\API\ContentController;
 use App\Http\Controllers\API\FaqController;
 use App\Http\Controllers\API\GalleryController;
+use App\Http\Controllers\API\NavigationController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ServiceController;
+use App\Http\Controllers\API\SitesettingController;
 use App\Http\Controllers\API\TeamController;
 use App\Http\Controllers\API\WhyusController;
 use Illuminate\Http\Request;
@@ -71,4 +73,14 @@ Route::prefix('contacts')->group(function () {
 Route::prefix('contacts')->group(function () {
     Route::get('/', [ContentController::class, 'index']);     // Get all contents
     Route::get('/{id}', [ContentController::class, 'show']);  // Get single content by ID});
+});
+// Navigation Routes
+Route::prefix('contacts')->group(function () {
+    Route::get('/', [NavigationController::class, 'index']);     // Get all navigations
+    Route::get('/{id}', [NavigationController::class, 'show']);  // Get single navigation by ID});
+});
+// Sitesetting Routes
+Route::prefix('contacts')->group(function () {
+    Route::get('/', [SitesettingController::class, 'index']);     // Get all sitesettings
+    Route::get('/{id}', [SitesettingController::class, 'show']);  // Get single sitesetting by ID});
 });

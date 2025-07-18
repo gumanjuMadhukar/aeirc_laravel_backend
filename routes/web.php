@@ -24,6 +24,10 @@ use App\Livewire\Admin\GalleryList\EditGallery;
 use App\Livewire\Admin\GalleryList\ViewGallery;
 
 use App\Livewire\Admin\Index;
+use App\Livewire\Admin\NAvigations;
+use App\Livewire\Admin\Navigations\CreateNavigation;
+use App\Livewire\Admin\Navigations\EditNavigation;
+use App\Livewire\Admin\Navigations\ViewNavigation;
 use App\Livewire\Admin\Products;
 use App\Livewire\Admin\Products\CreateProduct;
 use App\Livewire\Admin\Products\EditProduct;
@@ -44,6 +48,10 @@ use App\Livewire\Admin\Banners\CreateBanner;
 use App\Livewire\Admin\Banners\EditBanner;
 use App\Livewire\Admin\Banners\ViewBanner;
 
+use App\Livewire\Admin\Sitesettings;
+use App\Livewire\Admin\Sitesettings\CreateSitesetting;
+use App\Livewire\Admin\Sitesettings\EditSitesetting;
+use App\Livewire\Admin\Sitesettings\ViewSitesetting;
 use App\Livewire\Admin\Teams;
 use App\Livewire\Admin\Teams\CreateTeam;
 use App\Livewire\Admin\Teams\EditTeam;
@@ -275,6 +283,40 @@ Route::middleware(['auth'])->group(function (): void {
         Route::get('/contents/{content}/edit', EditContent::class)
             ->name('contents.edit')
             ->middleware('can:update contents');
+
+        // Navigation management routes
+        Route::get('/navigations', NAvigations::class)
+            ->name('navigations.index')
+            ->middleware('can:view navigations');
+    
+        Route::get('/navigations/create', CreateNavigation::class)
+            ->name('navigations.create')
+            ->middleware('can:create navigations');
+    
+        Route::get('/navigations/{navigation}', ViewNavigation::class)
+            ->name('navigations.show')
+            ->middleware('can:view navigations');
+    
+        Route::get('/navigations/{navigation}/edit', EditNavigation::class)
+            ->name('navigations.edit')
+            ->middleware('can:update navigations');
+
+        // Sitesetting management routes
+        Route::get('/sitesettings', Sitesettings::class)
+            ->name('sitesettings.index')
+            ->middleware('can:view sitesettings');
+    
+        Route::get('/sitesettings/create', CreateSitesetting::class)
+            ->name('sitesettings.create')
+            ->middleware('can:create sitesettings');
+    
+        Route::get('/sitesettings/{sitesetting}', ViewSitesetting::class)
+            ->name('sitesettings.show')
+            ->middleware('can:view sitesettings');
+    
+        Route::get('/sitesettings/{sitesetting}/edit', EditSitesetting::class)
+            ->name('sitesettings.edit')
+            ->middleware('can:update sitesettings');
     });
     
 
